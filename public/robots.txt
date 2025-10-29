@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://kavipay.com
+
+# Sitemaps
+Sitemap: https://kavipay.com/sitemap.xml
