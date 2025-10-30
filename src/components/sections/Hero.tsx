@@ -62,7 +62,7 @@ export function Hero() {
                 size="lg"
                 onClick={handleDownload}
               >
-                Get Started Free
+                Get Started
               </Button>
               <Button
                 variant="secondary"

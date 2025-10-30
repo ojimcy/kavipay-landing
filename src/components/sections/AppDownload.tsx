@@ -54,16 +54,16 @@ export function AppDownload() {
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
               <Download className="w-4 h-4" />
               <span className="text-sm font-semibold">
-                Available Now
+                Coming Soon
               </span>
             </div>
 
             <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
-              Download Kavipay Today
+              Join the Kavipay Waitlist
             </h2>
 
             <p className="text-xl text-white/90 mb-8 leading-relaxed">
-              Join thousands of users who are already enjoying borderless payments. Get started in minutes.
+              Be among the first to experience borderless payments. Our app is currently under review and launching soon.
             </p>
 
             {/* Benefits */}
@@ -87,31 +87,25 @@ export function AppDownload() {
 
             {/* App store buttons */}
             <div className="flex flex-col sm:flex-row gap-4 mb-8">
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="inline-flex items-center justify-center gap-3 bg-white text-neutral-900 px-6 py-4 rounded-xl font-semibold hover:bg-neutral-100 transition-all shadow-lg"
+              <motion.div
+                className="inline-flex items-center justify-center gap-3 bg-white/50 text-neutral-900 px-6 py-4 rounded-xl font-semibold shadow-lg cursor-not-allowed opacity-75"
               >
                 <div className="text-2xl">📱</div>
                 <div className="text-left">
-                  <div className="text-xs opacity-70">Download on the</div>
+                  <div className="text-xs opacity-70">Coming Soon on</div>
                   <div className="text-base font-bold">App Store</div>
                 </div>
-              </motion.a>
+              </motion.div>
 
-              <motion.a
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                href="#"
-                className="inline-flex items-center justify-center gap-3 bg-white text-neutral-900 px-6 py-4 rounded-xl font-semibold hover:bg-neutral-100 transition-all shadow-lg"
+              <motion.div
+                className="inline-flex items-center justify-center gap-3 bg-white/50 text-neutral-900 px-6 py-4 rounded-xl font-semibold shadow-lg cursor-not-allowed opacity-75"
               >
                 <div className="text-2xl">🤖</div>
                 <div className="text-left">
-                  <div className="text-xs opacity-70">Get it on</div>
+                  <div className="text-xs opacity-70">Coming Soon on</div>
                   <div className="text-base font-bold">Google Play</div>
                 </div>
-              </motion.a>
+              </motion.div>
             </div>
 
             {/* Payment methods */}
@@ -142,10 +136,10 @@ export function AppDownload() {
             >
               <div className="text-center mb-4">
                 <div className="text-neutral-900 font-bold text-lg mb-1">
-                  Scan to Download
+                  Coming Soon
                 </div>
                 <div className="text-neutral-600 text-sm">
-                  Available on iOS & Android
+                  App under review for iOS & Android
                 </div>
               </div>
 
@@ -168,7 +162,7 @@ export function AppDownload() {
 
               <div className="mt-4 flex items-center justify-center gap-2 text-neutral-600 text-sm">
                 <Smartphone className="w-4 h-4" />
-                <span>Point your camera here</span>
+                <span>Stay tuned for launch</span>
               </div>
             </motion.div>
 

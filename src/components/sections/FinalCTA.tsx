@@ -133,7 +133,7 @@ export function FinalCTA() {
                   disabled={loading}
                   className="bg-white text-primary-600 hover:bg-neutral-100 border-0"
                 >
-                  {loading ? 'Joining...' : 'Join Waitlist'}
+                  {loading ? 'Joining...' : 'Join'}
                 </Button>
               </form>
             )}
