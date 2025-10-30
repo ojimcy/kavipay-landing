@@ -15,7 +15,7 @@ export function HowItWorks() {
       number: 2,
       icon: CheckCircle,
       title: 'Complete Verification',
-      description: 'Quick ID check (2-3 minutes)',
+      description: 'Quick ID check (0-2 minutes)',
     },
     {
       number: 3,

@@ -85,7 +85,7 @@ export function Problem() {
           className="text-center"
         >
           <p className="text-xl text-primary-600 font-semibold">
-            There's a Better Way →
+            There&apos;s a Better Way →
           </p>
         </motion.div>
       </div>
