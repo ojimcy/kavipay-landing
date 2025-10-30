@@ -138,7 +138,7 @@ export function Security() {
               Certified & Compliant
             </h3>
             <p className="text-neutral-600">
-              We meet the highest industry standards for security and compliance
+              Our partners meet the highest industry standards for security and compliance
             </p>
           </div>
 

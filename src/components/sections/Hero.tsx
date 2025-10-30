@@ -134,7 +134,7 @@ export function Hero() {
                           <div className="flex justify-between items-end">
                             <div>
                               <div className="text-[8px] opacity-70">CARDHOLDER</div>
-                              <div className="text-xs font-semibold">YOUR NAME</div>
+                              <div className="text-xs font-semibold">John Doe</div>
                             </div>
                             <div className="text-xs font-bold">VISA</div>
                           </div>
