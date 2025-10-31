@@ -21,8 +21,6 @@ export default function CardPage() {
         <CardHero />
         <VirtualCard />
         <PhysicalCard />
-        <CardFeatures />
-        <CardComparison />
         <CardCTA />
       </main>
       <Footer />
