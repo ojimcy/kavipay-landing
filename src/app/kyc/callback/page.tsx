@@ -22,17 +22,21 @@ export default function KYCCallbackPage() {
 
     // Try deep link first, fallback to store
     if (isIOS) {
-      setAppUrl('kavipay://kyc/success'); // Deep link to app
+      setAppUrl('kavipay://kyc?status=completed'); // Deep link to app
       // Fallback to App Store if app not installed
       setTimeout(() => {
-        const appStoreUrl = process.env.NEXT_PUBLIC_APP_STORE_URL || 'https://apps.apple.com/app/kavipay';
+        const appStoreUrl =
+          process.env.NEXT_PUBLIC_APP_STORE_URL ||
+          'https://apps.apple.com/app/kavipay';
         setAppUrl(appStoreUrl);
       }, 2500);
     } else if (isAndroid) {
-      setAppUrl('kavipay://kyc/success'); // Deep link to app
+      setAppUrl('kavipay://kyc?status=completed'); // Deep link to app
       // Fallback to Play Store if app not installed
       setTimeout(() => {
-        const playStoreUrl = process.env.NEXT_PUBLIC_PLAY_STORE_URL || 'https://play.google.com/store/apps/kavipay';
+        const playStoreUrl =
+          process.env.NEXT_PUBLIC_PLAY_STORE_URL ||
+          'https://play.google.com/store/apps/kavipay';
         setAppUrl(playStoreUrl);
       }, 2500);
     } else {
@@ -67,14 +71,14 @@ export default function KYCCallbackPage() {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 transition={{
-                  type: "spring",
+                  type: 'spring',
                   stiffness: 200,
                   damping: 15,
-                  delay: 0.2
+                  delay: 0.2,
                 }}
                 className="mb-8 inline-block"
               >
-                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center shadow-lg">
+                <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary-400 to-primary-600 rounded-full flex items-center justify-center shadow-lg">
                   <CheckCircle className="w-14 h-14 text-white" />
                 </div>
               </motion.div>
@@ -86,7 +90,7 @@ export default function KYCCallbackPage() {
                 transition={{ delay: 0.3 }}
                 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-6"
               >
-                KYC Verification Complete!
+                Submission Complete!
               </motion.h1>
 
               {/* Description */}
@@ -96,7 +100,7 @@ export default function KYCCallbackPage() {
                 transition={{ delay: 0.4 }}
                 className="text-xl text-neutral-600 mb-4"
               >
-                Congratulations! Your identity has been verified successfully.
+                Thank you for submitting your KYC verification.
               </motion.p>
 
               <motion.p
@@ -105,7 +109,8 @@ export default function KYCCallbackPage() {
                 transition={{ delay: 0.5 }}
                 className="text-lg text-neutral-600 mb-12"
               >
-                You can now access all Kavipay features and start spending globally.
+                Open the Kavipay app to check your verification status and
+                complete the process.
               </motion.p>
 
               {/* CTA Button */}
@@ -115,11 +120,7 @@ export default function KYCCallbackPage() {
                 transition={{ delay: 0.6 }}
                 className="mb-12"
               >
-                <Button
-                  size="lg"
-                  onClick={handleOpenApp}
-                  className="gap-2"
-                >
+                <Button size="lg" onClick={handleOpenApp} className="gap-2">
                   <Smartphone className="w-5 h-5" />
                   Open Kavipay App
                 </Button>
@@ -141,7 +142,10 @@ export default function KYCCallbackPage() {
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
-                    href={process.env.NEXT_PUBLIC_APP_STORE_URL || 'https://apps.apple.com/app/kavipay'}
+                    href={
+                      process.env.NEXT_PUBLIC_APP_STORE_URL ||
+                      'https://apps.apple.com/app/kavipay'
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => analytics.downloadClick('ios')}
@@ -150,7 +154,10 @@ export default function KYCCallbackPage() {
                     Download for iOS
                   </a>
                   <a
-                    href={process.env.NEXT_PUBLIC_PLAY_STORE_URL || 'https://play.google.com/store/apps/kavipay'}
+                    href={
+                      process.env.NEXT_PUBLIC_PLAY_STORE_URL ||
+                      'https://play.google.com/store/apps/kavipay'
+                    }
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => analytics.downloadClick('android')}
