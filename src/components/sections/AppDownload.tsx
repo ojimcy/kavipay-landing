@@ -7,7 +7,7 @@ import { ApplePayLogo, GooglePayLogo } from '@/components/icons/PaymentLogos';
 
 export function AppDownload() {
   const benefits = [
-    'Instant account setup in under 2 minutes',
+    'Instant account setup in less than 2 minutes',
     'Get your virtual card immediately - works globally',
     'Add to Apple Pay & Google Pay for contactless payments',
     'Pay utilities in Nigeria - airtime, data, electricity & TV',

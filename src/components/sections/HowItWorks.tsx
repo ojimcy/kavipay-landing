@@ -38,7 +38,7 @@ export function HowItWorks() {
             Get Started in 3 Easy Steps
           </h2>
           <p className="text-lg text-neutral-600">
-            From download to first purchase in under 10 minutes
+            From download to first purchase in less than 10 minutes
           </p>
         </motion.div>
 
