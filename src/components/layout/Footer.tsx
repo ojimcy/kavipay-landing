@@ -44,7 +44,7 @@ export function Footer() {
           <div className="col-span-2 md:col-span-1">
             <div className="mb-4">
               <Image
-                src="/logo/full-logo-white.svg"
+                src="/images/logos/kavi-logo-white.png"
                 alt="Kavipay"
                 width={140}
                 height={40}
