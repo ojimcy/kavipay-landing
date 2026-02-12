@@ -24,9 +24,10 @@ export function Footer() {
       { label: 'Status', href: '#' },
     ],
     legal: [
-      { label: 'Terms', href: '#' },
-      { label: 'Privacy', href: '#' },
-      { label: 'Security', href: '#' },
+      { label: 'Terms & Conditions', href: '/terms-and-conditions' },
+      { label: 'Privacy Policy', href: '/privacy-policy' },
+      { label: 'Cookies Policy', href: '/cookies-policy' },
+      { label: 'EULA', href: '/eula' },
     ],
   };
 
