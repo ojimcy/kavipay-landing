@@ -6,7 +6,7 @@
 
   <!-- Homepage -->
   <url>
-    <loc>https://kavipay.com/</loc>
+    <loc>https://kavipay.io/</loc>
     <lastmod>2025-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
@@ -14,7 +14,7 @@
 
   <!-- Cards Page -->
   <url>
-    <loc>https://kavipay.com/card</loc>
+    <loc>https://kavipay.io/card</loc>
     <lastmod>2025-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -22,7 +22,7 @@
 
   <!-- Utilities Page -->
   <url>
-    <loc>https://kavipay.com/utilities</loc>
+    <loc>https://kavipay.io/utilities</loc>
     <lastmod>2025-10-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

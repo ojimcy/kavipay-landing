@@ -10,12 +10,13 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://kavipay.com'),
+  metadataBase: new URL('https://kavipay.io'),
   title: {
     default: 'Kavipay - Your Money, Without Borders',
     template: '%s | Kavipay',
   },
-  description: 'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control. Join 10,000+ users worldwide.',
+  description:
+    'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control. Join 10,000+ users worldwide.',
   keywords: [
     'virtual card',
     'global payments',
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     'online payments',
     'fintech',
   ],
-  authors: [{ name: 'Kavipay', url: 'https://kavipay.com' }],
+  authors: [{ name: 'Kavipay', url: 'https://kavipay.io' }],
   creator: 'Kavipay',
   publisher: 'Kavipay',
   formatDetection: {
@@ -46,7 +47,11 @@ export const metadata: Metadata = {
     ],
     shortcut: '/favicon.ico',
     apple: [
-      { url: '/icons/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      {
+        url: '/icons/apple-touch-icon.png',
+        sizes: '180x180',
+        type: 'image/png',
+      },
     ],
     other: [
       {
@@ -67,9 +72,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://kavipay.com',
+    url: 'https://kavipay.io',
     title: 'Kavipay - Your Money, Without Borders',
-    description: 'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control.',
+    description:
+      'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control.',
     siteName: 'Kavipay',
     images: [
       {
@@ -83,7 +89,8 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Kavipay - Your Money, Without Borders',
-    description: 'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control.',
+    description:
+      'Spend globally with virtual cards that work with Apple Pay & Google Pay. Zero fees, instant funding, total control.',
     images: ['/og-image.png'],
     creator: '@kavipay',
     site: '@kavipay',
@@ -105,7 +112,7 @@ export const metadata: Metadata = {
     // yandex: 'your-yandex-verification-code',
   },
   alternates: {
-    canonical: 'https://kavipay.com',
+    canonical: 'https://kavipay.io',
   },
   category: 'finance',
 };
@@ -127,9 +134,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={inter.variable}>
-      <body className={inter.className}>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

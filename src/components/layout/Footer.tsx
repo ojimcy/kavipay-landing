@@ -22,6 +22,7 @@ export function Footer() {
       { label: 'Help Center', href: '#' },
       { label: 'Contact', href: '#' },
       { label: 'Status', href: '#' },
+      { label: 'Delete Account', href: '/delete-account' },
     ],
     legal: [
       { label: 'Terms & Conditions', href: '/terms-and-conditions' },

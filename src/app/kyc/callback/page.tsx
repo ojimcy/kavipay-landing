@@ -178,10 +178,10 @@ export default function KYCCallbackPage() {
                 <p>
                   Need help? Contact our support team at{' '}
                   <a
-                    href="mailto:support@kavipay.com"
+                    href="mailto:support@kavipay.io"
                     className="text-primary-600 hover:text-primary-700 underline"
                   >
-                    support@kavipay.com
+                    support@kavipay.io
                   </a>
                 </p>
               </motion.div>
