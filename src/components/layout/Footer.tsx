@@ -19,7 +19,7 @@ export function Footer() {
       { label: 'Press', href: '#' },
     ],
     support: [
-      { label: 'Help Center', href: '#' },
+      { label: 'Help Center', href: '/help' },
       { label: 'FAQ', href: '/faq' },
       { label: 'Knowledge Base', href: '/knowledge-base' },
       { label: 'Contact', href: '#' },
