@@ -20,6 +20,8 @@ export function Footer() {
     ],
     support: [
       { label: 'Help Center', href: '#' },
+      { label: 'FAQ', href: '/faq' },
+      { label: 'Knowledge Base', href: '/knowledge-base' },
       { label: 'Contact', href: '#' },
       { label: 'Status', href: '#' },
       { label: 'Delete Account', href: '/delete-account' },

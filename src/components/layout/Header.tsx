@@ -124,7 +124,7 @@ export function Header() {
               How It Works
             </Link>
             <Link
-              href="/#faq"
+              href="/faq"
               className="text-neutral-700 hover:text-primary-500 transition-colors font-medium"
             >
               FAQ
@@ -206,7 +206,7 @@ export function Header() {
                   How It Works
                 </Link>
                 <Link
-                  href="/#faq"
+                  href="/faq"
                   className="block px-4 py-2 text-neutral-700 hover:text-primary-500 transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
