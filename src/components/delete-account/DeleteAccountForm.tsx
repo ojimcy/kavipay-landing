@@ -22,7 +22,7 @@ export function DeleteAccountForm() {
 
     try {
       const response = await fetch(
-        'https://mining-api-123lfk.ploutoslabs.io/delete-request',
+        'https://mining-api-123lfk.ploutoslabs.io/account/delete-request',
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
