@@ -21,11 +21,14 @@ export function DeleteAccountForm() {
     setError('');
 
     try {
-      const response = await fetch('https://api.kavipay.io/account/delete-request', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, reason }),
-      });
+      const response = await fetch(
+        'https://mining-api-123lfk.ploutoslabs.io/delete-request',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, reason }),
+        },
+      );
 
       if (response.ok) {
         setSuccess(true);
