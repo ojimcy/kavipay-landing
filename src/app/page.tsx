@@ -3,8 +3,8 @@ import {
   Hero,
   TrustBar,
   Features,
-  Security,
   HowItWorks,
+  Security,
   Testimonials,
   AppDownload,
   FinalCTA,
@@ -18,8 +18,8 @@ export default function HomePage() {
         <Hero />
         <TrustBar />
         <Features />
-        <Security />
         <HowItWorks />
+        <Security />
         <Testimonials />
         <AppDownload />
         <FinalCTA />
