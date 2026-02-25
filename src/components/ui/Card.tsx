@@ -2,7 +2,7 @@ import { HTMLAttributes, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
 
 export interface CardProps extends HTMLAttributes<HTMLDivElement> {
-  variant?: 'feature' | 'testimonial';
+  variant?: 'feature' | 'testimonial' | 'glass';
   hover?: boolean;
 }
 
@@ -12,24 +12,26 @@ const Card = forwardRef<HTMLDivElement, CardProps>(
       <div
         ref={ref}
         className={cn(
-          // Base styles
-          'rounded-xl',
+          'rounded-2xl',
 
-          // Variants
           {
-            // Feature card
-            'p-8 bg-white border border-neutral-200 shadow-md':
+            'p-8 bg-white border border-neutral-100 shadow-card':
               variant === 'feature',
 
-            // Testimonial card
-            'p-6 bg-neutral-50 border-l-4 border-primary-500':
+            'p-6 bg-neutral-50/80 border border-neutral-100 rounded-2xl':
               variant === 'testimonial',
+
+            'p-8 glass shadow-glass':
+              variant === 'glass',
           },
 
-          // Hover effects
           {
-            'transition-all duration-300 hover:shadow-lg hover:-translate-y-1':
+            'transition-all duration-300 hover:shadow-card-hover hover:-translate-y-1':
               hover && variant === 'feature',
+            'transition-all duration-300 hover:shadow-soft hover:-translate-y-0.5':
+              hover && variant === 'testimonial',
+            'transition-all duration-300 hover:shadow-soft-lg':
+              hover && variant === 'glass',
           },
 
           className

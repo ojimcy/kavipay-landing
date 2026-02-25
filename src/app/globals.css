@@ -18,6 +18,10 @@
     width: 100%;
   }
 
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
+  }
+
   /* Respect reduced motion preferences */
   @media (prefers-reduced-motion: reduce) {
     * {
@@ -31,7 +35,7 @@
 @layer components {
   /* Container utilities */
   .container {
-    @apply mx-auto px-4 max-w-7xl;
+    @apply mx-auto px-4 sm:px-6 max-w-7xl;
   }
 
   /* Prevent mobile overflow */
@@ -41,15 +45,15 @@
 
   /* Text styles matching design system */
   .text-display {
-    @apply text-4xl md:text-6xl font-bold leading-tight tracking-tight;
+    @apply text-[40px] md:text-[72px] font-extrabold leading-[1.05] tracking-[-0.03em];
   }
 
   .text-h1 {
-    @apply text-3xl md:text-5xl font-bold leading-tight tracking-tight;
+    @apply text-[36px] md:text-[56px] font-bold leading-[1.1] tracking-[-0.025em];
   }
 
   .text-h2 {
-    @apply text-2xl md:text-4xl font-semibold leading-snug;
+    @apply text-[30px] md:text-[42px] font-bold leading-[1.2] tracking-[-0.02em];
   }
 
   .text-h3 {
@@ -58,7 +62,7 @@
 
   /* Focus styles for accessibility */
   .focus-ring {
-    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-100 focus-visible:ring-offset-2;
+    @apply focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-primary-200 focus-visible:ring-offset-2;
   }
 
   /* Screen reader only utility */
@@ -71,27 +75,58 @@
     @apply static w-auto h-auto p-2 m-0 overflow-visible whitespace-normal;
     clip: auto;
   }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-neutral-900/70 backdrop-blur-xl border border-white/10;
+  }
+
+  /* Gradient border card */
+  .gradient-border {
+    position: relative;
+    background: white;
+    border-radius: 1rem;
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, #6366F1, #10B981);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .gradient-border:hover::before {
+    opacity: 1;
+  }
 }
 
 @layer utilities {
-  /* Custom utilities */
+  /* Gradient text */
   .gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-cta;
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #6366F1 0%, #10B981 100%);
+  }
+
+  .gradient-text-hero {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, #4F46E5 0%, #6366F1 40%, #10B981 100%);
   }
 
   /* Animated gradient backgrounds */
   .animate-gradient {
     background-size: 200% 200%;
-    animation: gradient 8s ease infinite;
-  }
-
-  @keyframes gradient {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
+    animation: gradientShift 8s ease infinite;
   }
 
   /* Shimmer effect */
@@ -99,20 +134,21 @@
     background: linear-gradient(
       90deg,
       transparent 0%,
-      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0.3) 50%,
       transparent 100%
     );
     background-size: 200% 100%;
-    animation: shimmer 3s infinite;
+    animation: shimmer 2.5s infinite;
   }
 
   @keyframes shimmer {
-    0% {
-      background-position: -200% 0;
-    }
-    100% {
-      background-position: 200% 0;
-    }
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+  }
+
+  @keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
   }
 
   /* Pulse glow */
@@ -121,11 +157,27 @@
   }
 
   @keyframes pulse-glow {
-    0%, 100% {
-      box-shadow: 0 0 20px rgba(0, 102, 255, 0.3);
-    }
-    50% {
-      box-shadow: 0 0 30px rgba(0, 102, 255, 0.6);
-    }
+    0%, 100% { box-shadow: 0 0 20px rgba(99, 102, 241, 0.3); }
+    50% { box-shadow: 0 0 40px rgba(99, 102, 241, 0.6); }
+  }
+
+  /* Noise texture overlay */
+  .noise {
+    position: relative;
+  }
+
+  .noise::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0.03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+  }
+
+  /* Dot grid pattern */
+  .dot-pattern {
+    background-image: radial-gradient(circle, #d4d4d4 1px, transparent 1px);
+    background-size: 24px 24px;
   }
 }

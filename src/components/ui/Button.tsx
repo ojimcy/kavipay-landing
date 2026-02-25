@@ -13,31 +13,25 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       <button
         ref={ref}
         className={cn(
-          // Base styles
           'inline-flex items-center justify-center',
-          'font-semibold rounded-lg',
-          'transition-all duration-200',
+          'font-semibold rounded-xl',
+          'transition-all duration-300 ease-out',
           'focus-ring',
           'disabled:opacity-50 disabled:cursor-not-allowed disabled:pointer-events-none',
 
-          // Variants
           {
-            // Primary CTA button with brand gradient (blue to teal)
-            'bg-gradient-cta text-white shadow-button hover:shadow-button-hover hover:scale-105 active:scale-95 relative overflow-hidden':
+            'bg-primary-600 text-white shadow-button hover:shadow-button-hover hover:bg-primary-700 hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] relative overflow-hidden':
               variant === 'primary',
 
-            // Secondary outline button
-            'border-2 border-primary-500 text-primary-600 hover:bg-primary-50 active:bg-primary-100':
+            'border-2 border-neutral-200 text-neutral-700 hover:border-primary-300 hover:text-primary-600 hover:bg-primary-50/50 active:bg-primary-100':
               variant === 'secondary',
 
-            // Ghost button
-            'text-neutral-700 hover:text-primary-600 hover:bg-primary-50':
+            'text-neutral-600 hover:text-primary-600 hover:bg-neutral-100':
               variant === 'ghost',
           },
 
-          // Sizes
           {
-            'px-4 py-2 text-sm min-w-[100px]': size === 'sm',
+            'px-5 py-2.5 text-sm min-w-[100px]': size === 'sm',
             'px-6 py-3 text-base min-w-[140px]': size === 'md',
             'px-8 py-4 text-lg min-w-[160px]': size === 'lg',
           },
