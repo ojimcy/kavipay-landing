@@ -1,11 +1,31 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { useState, useEffect, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { analytics } from '@/lib/analytics';
 import { ArrowRight } from 'lucide-react';
 
+const appScreens = [
+  { src: '/images/app/screen-home.svg', alt: 'Kavipay Dashboard' },
+  { src: '/images/app/screen-cards.svg', alt: 'Kavipay Virtual Cards' },
+  { src: '/images/app/screen-send.svg', alt: 'Kavipay Pay Utilities' },
+];
+
+const SLIDE_DURATION = 3500; // ms per screen
+
 export function Hero() {
+  const [currentScreen, setCurrentScreen] = useState(0);
+
+  const nextScreen = useCallback(() => {
+    setCurrentScreen((prev) => (prev + 1) % appScreens.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextScreen, SLIDE_DURATION);
+    return () => clearInterval(timer);
+  }, [nextScreen]);
+
   const handleDownload = () => {
     analytics.ctaClick('hero_download');
     document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' });
@@ -44,8 +64,8 @@ export function Hero() {
               transition={{ delay: 0.1, duration: 0.5 }}
               className="inline-flex items-center gap-2 bg-indigo-50 text-indigo-700 px-4 py-2 rounded-full text-sm font-semibold mb-6"
             >
-              <span className="flex h-2 w-2">
-                <span className="animate-ping absolute h-2 w-2 rounded-full bg-indigo-400 opacity-75" />
+              <span className="flex h-2 w-2 relative">
+                <span className="animate-ping absolute inset-0 rounded-full bg-indigo-400 opacity-75" />
                 <span className="relative h-2 w-2 rounded-full bg-indigo-500" />
               </span>
               Now Available
@@ -69,7 +89,8 @@ export function Hero() {
               transition={{ delay: 0.3, duration: 0.5 }}
               className="text-lg text-neutral-600 leading-relaxed mb-8 max-w-md"
             >
-              Get instant virtual cards, shop globally, pay bills, and manage your money — all from one app. Works with Apple Pay & Google Pay.
+              Get instant virtual cards, shop globally, pay bills, and manage
+              your money — all from one app. Works with Apple Pay & Google Pay.
             </motion.p>
 
             {/* CTAs */}
@@ -126,7 +147,7 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right: Phone Mockup with real app screenshot */}
+          {/* Right: Phone Mockup with looping app screens */}
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
@@ -136,29 +157,61 @@ export function Hero() {
             <div className="relative">
               {/* Phone frame */}
               <div className="relative w-[280px] sm:w-[300px] mx-auto">
-                {/* Glow */}
-                <div className="absolute -inset-8 bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-emerald-500/15 rounded-[50px] blur-[40px]" />
+                {/* Glow behind phone */}
+                <div className="absolute -inset-10 bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-emerald-500/15 rounded-[60px] blur-[50px]" />
 
                 {/* Phone body */}
                 <div className="relative bg-neutral-900 rounded-[3rem] p-[6px] shadow-[0_25px_60px_-12px_rgba(0,0,0,0.3)]">
                   <div className="bg-neutral-950 rounded-[2.6rem] overflow-hidden">
-                    {/* Notch */}
-                    <div className="relative z-10 flex justify-center pt-2">
-                      <div className="h-[24px] w-[90px] bg-neutral-950 rounded-b-2xl" />
+                    {/* Dynamic Island / Notch */}
+                    <div className="relative z-20 flex justify-center pt-3 pb-0">
+                      <div className="h-[28px] w-[100px] bg-black rounded-full" />
                     </div>
 
-                    {/* App Screenshot */}
-                    <div className="relative -mt-2">
-                      <Image
-                        src="/images/app/screen-home.svg"
-                        alt="Kavipay App - Dashboard"
-                        width={375}
-                        height={812}
-                        className="w-full h-auto"
-                        priority
-                      />
+                    {/* Looping screen carousel */}
+                    <div className="relative w-full aspect-[375/780] overflow-hidden -mt-3">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={currentScreen}
+                          initial={{ opacity: 0, scale: 1.02 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.98 }}
+                          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={appScreens[currentScreen].src}
+                            alt={appScreens[currentScreen].alt}
+                            width={375}
+                            height={812}
+                            className="w-full h-full object-cover object-top"
+                            priority={currentScreen === 0}
+                          />
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Home indicator */}
+                    <div className="flex justify-center py-2">
+                      <div className="h-[4px] w-[100px] bg-neutral-700 rounded-full" />
                     </div>
                   </div>
+                </div>
+
+                {/* Screen indicator dots */}
+                <div className="flex justify-center gap-1.5 mt-5">
+                  {appScreens.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setCurrentScreen(i)}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === currentScreen
+                          ? 'w-6 bg-indigo-600'
+                          : 'w-1.5 bg-neutral-300 hover:bg-neutral-400'
+                      }`}
+                      aria-label={`Show screen ${i + 1}`}
+                    />
+                  ))}
                 </div>
               </div>
 
@@ -166,7 +219,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, -8, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-                className="absolute -left-12 top-20 bg-white rounded-xl px-4 py-3 shadow-lg border border-neutral-100 hidden md:flex items-center gap-3"
+                className="absolute -left-12 top-24 bg-white rounded-xl px-4 py-3 shadow-lg border border-neutral-100 hidden md:flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center">
                   <svg className="w-5 h-5 text-emerald-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
@@ -182,7 +235,7 @@ export function Hero() {
               <motion.div
                 animate={{ y: [0, 8, 0] }}
                 transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-                className="absolute -right-8 bottom-32 bg-white rounded-xl px-4 py-3 shadow-lg border border-neutral-100 hidden md:flex items-center gap-3"
+                className="absolute -right-8 bottom-40 bg-white rounded-xl px-4 py-3 shadow-lg border border-neutral-100 hidden md:flex items-center gap-3"
               >
                 <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center">
                   <svg className="w-5 h-5 text-indigo-600" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
